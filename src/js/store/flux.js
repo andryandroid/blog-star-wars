@@ -1,4 +1,4 @@
-const getState = ({ getStore, getActions, setStore }) => {
+	const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			demo: [
@@ -12,18 +12,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+            ],
+            people: {},
+            planets:{},
+            starships:{},
+            films:{},
+            vehicles:{},
+            species:{},
+            favorites:{}
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
+			getAppi: (url,propiedad) => {
+					fetch(url).then().then(data => setStore({ propiedad: data}))
+                },
+            
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
